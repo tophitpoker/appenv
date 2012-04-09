@@ -4,7 +4,7 @@ Little module that will help you to deal with application environment.
 
 ## Mission ##
 
-I was tired to copy some very simple but very handy function to deal with application evnironment values, so I packed them as a module. I thought if it helps me it may help to somebody else too.
+I was tired of copying over projects some very simple but very handy functions to deal with application environment values. I packed them as a module. I thought if it helps me it may help to somebody else too.
 
 I hope it will be useful for dear Erlanger.
 
