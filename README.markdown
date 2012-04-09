@@ -23,4 +23,4 @@ appenv:get(key, DefaultValue),
 
 ## Licence ##
 
-!(MIT)[http://en.wikipedia.org/wiki/MIT_License]
+MIT - http://en.wikipedia.org/wiki/MIT_License
