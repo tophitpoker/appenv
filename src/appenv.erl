@@ -25,30 +25,30 @@
 -module (appenv).
 -author('bourinov@gmail.com').
 
--export([get/1, get/2]).
+-export([get/2, get/3]).
 
 %% @doc Get application environment value of Param from config.
 %%      Returns 'undefined' if Param not exists.
 %% @end
--spec get(Param :: atom()) -> term() | undefined.
-get(Param) ->
-  get_env(Param, undefined).
+-spec get(Module :: atom(), Param :: atom()) -> term() | undefined.
+get(Module, Param) ->
+  get_env(Module, Param, undefined).
 
 %% @doc Get application environment value of Param from config.
 %%      Returns Default value if Param not exists.
 %% @end
--spec get(Param :: atom(), Default :: term()) -> term().
-get(Param, Default) ->
-  get_env(Param, Default).
+-spec get(Module :: atom(), Param :: atom(), Default :: term()) -> term().
+get(Module, Param, Default) ->
+  get_env(Module, Param, Default).
 
 %% @doc Get environment variable for arbitrary application specified
-%%      by ModPid what is module or process identificator which belongs to
+%%      by Module what is module or process identificator which belongs to
 %%      desired application
 %% @end
 %% @private
--spec get_env(Param :: atom(), Default :: term()) -> term().
-get_env(Param, Default) ->
-    {ok, App} = application:get_application(?MODULE),
+-spec get_env(Module :: atom(), Param :: atom(), Default :: term()) -> term().
+get_env(Module, Param, Default) ->
+    {ok, App} = application:get_application(Module),
     case application:get_env(App, Param) of
         {ok, Value} ->
             Value;
