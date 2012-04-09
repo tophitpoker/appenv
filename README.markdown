@@ -10,15 +10,44 @@ I hope it will be useful for dear Erlanger.
 
 ## Usage ##
 
+app.config:
+
 ```erlang
+%% -*- mode: Erlang; -*-
+
+[
+    %% SASL config
+    {sasl, [
+        % ...
+    ]},
+
+    %% You app config
+    {my_app, [
+
+        % The value you want to extract
+        {my_key, 43}
+        % ...
+    ]}
+]
+```
+
+Your code:
+
+```erlang
+% Here you specify section of app.config you are interested in.
+AppName = my_app,
+
 % Call to get value of the key specifyer in app.config.
 % If nothing is specifyed for `key` atom `undefined` will be returned.
-appenv:get(key),
+> appenv:get(AppName, my_key),
+43.
+
 
 % Call to get value of the key specifyer in app.config.
 % If nothing is specifyed for `key` DefaultValue will be returned.
 DefaultValue = 42,
-appenv:get(key, DefaultValue),
+> appenv:get(AppName, my_key2, DefaultValue),
+42.
 ```
 
 ## Licence ##
